@@ -1,0 +1,21 @@
+{
+  "name": "todoman",
+  "version": "1.0.0",
+  "description": "TODOMan\r Task management app where users can create, update, and delete tasks. Includes other features such as:\r - Due dates\r - Priority levels\r - Categories",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/index.js",
+    "build": "cd client && npm install && npm run build"
+  },
+  "engines": {
+    "node": "23.7.0"
+  },
+  "keywords": [],
+  "author": "mattweedy",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}
