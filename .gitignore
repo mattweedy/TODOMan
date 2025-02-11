@@ -24,3 +24,5 @@ client/*.sln
 client/*.sw?
 
 node_modules
+
+server/connection.js
