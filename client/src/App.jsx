@@ -1,27 +1,29 @@
-import { useState } from 'react'
-import { useEffect } from 'react'
-import './App.css'
+import { useState } from "react";
+import { useEffect } from "react";
+import TaskListContainer from "./components/TaskListContainer";
+import "./App.css";
 
 function App() {
-  const [data, setData] = useState(null)
+    const [data, setData] = useState(null);
 
-  useEffect(() => {
-    fetch("http://localhost:3001/api")
-        .then((res) => res.json())
-        .then((data) => setData(data.message));
-  }, []);
+    useEffect(() => {
+        fetch("http://localhost:3001/api")
+            .then((res) => res.json())
+            .then((data) => setData(data.message));
+    }, []);
 
-  return (
-    <>
-      <div className="App">
-        <header className="App-header">
-            <h2>Begin adding tasks!</h2>
-            
-            <p>{!data ? "Loading..." : data}</p>
-        </header>
-      </div>
-    </>
-  );
+    return (
+        <>
+            <div className="App">
+                <header className="App-header">
+                    <h2>Begin adding tasks!</h2>
+                    <p>{!data ? "Loading..." : data}</p>
+                </header>
+
+                <TaskListContainer />
+            </div>
+        </>
+    );
 }
 
-export default App
+export default App;
