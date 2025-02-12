@@ -1,27 +1,82 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 import TaskCreateTextBox from "./TaskCreateTextBox";
 
+// TODO: talk with mongoDB and add/remove items
+// TODO: have the state saved by remembering/filling out from DB
+
 export default function TaskListContainer() {
-    const [todoText, setTodoText] = useState("")
+    // state for current todo
+    const [todo, setTodo] = useState({
+        id: "",
+        text: "",
+        type: "default",
+        importance: "medium",
+    });
+    // state for the list of todos
     const [todoList, setTodoList] = useState([]);
 
+    // add new todo to the list
     const addTodo = (newTodo) => {
-        setTodoList([...todoList, newTodo]);
+        const todoWithId = {
+            ...newTodo,
+            id: uuidv4(), // generate uuid for new todo
+        };
+        setTodoList([...todoList, todoWithId]);
+        console.log(`Added new todo:
+            id   : ${todoWithId.id}
+            text : ${todoWithId.text}
+            type : ${todoWithId.type}
+            importance : ${todoWithId.importance}`);
     };
 
-    function clearList() {
-        setTodoList([]);
-    }
+    // remove a todo by its ID
+    const removeTodo = (todoId) => {
+        setTodoList(todoList.filter((todo) => todo.id !== todoId));
+    };
 
-    const listItems = todoList.map(todo =>
-        <li>{todo}</li>
-    );
+    // clear the entire list
+    const clearList = () => {
+        setTodoList([]);
+    };
+
+    // render list of todos
+    const listItems = todoList.map((todo) => (
+        <li key={todo.id}>
+            {/* {todo.id} | {todo.text} | {todo.type} | {todo.importance} */}
+            {todo.text} | {todo.type} | {todo.importance}
+            <button onClick={() => removeTodo(todo.id)}>x</button>
+        </li>
+    ));
+
+    const tableItems = todoList.map((todo) => (
+        <tr key={todo.id}>
+            <td>{todo.text}</td>
+            <td>{todo.type}</td>
+            <td>{todo.importance}</td>
+            <td><button onClick={() => removeTodo(todo.id)}>x</button></td>
+        </tr>
+    ));
 
     return (
         <div>
-            <TaskCreateTextBox todoText={todoText} setTodoText={setTodoText} addTodo={addTodo}/>
-            <ul>{listItems}</ul>
-            <button onClick={clearList}>Clear All</button>
+            <TaskCreateTextBox
+                todo={todo}
+                setTodo={setTodo}
+                addTodo={addTodo}
+            />
+            {/* <ul>{listItems}</ul> */}
+            <table>
+                <tr>
+                    <th>Todo</th>
+                    <th>Type</th>
+                    <th>Importance</th>
+                </tr>
+                {tableItems}
+            </table>
+            <button onClick={clearList}>
+                Clear All
+            </button>
         </div>
-    )
+    );
 }

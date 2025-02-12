@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import TaskListContainer from "./components/TaskListContainer";
 import "./App.css";
 
+// TODO: eventually implement the suggestions from G.S
+
 function App() {
     const [data, setData] = useState(null);
 
