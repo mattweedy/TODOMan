@@ -18,8 +18,8 @@ function App() {
         <>
             <div className="App">
                 <header className="App-header">
-                    <h2>Begin adding tasks!</h2>
-                    <p>{!data ? "Loading..." : data}</p>
+                    <h1>Begin adding tasks!</h1>
+                    <h2>{!data ? "Loading..." : data}</h2>
                 </header>
 
                 <TaskListContainer />

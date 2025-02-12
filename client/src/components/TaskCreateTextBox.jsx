@@ -3,8 +3,8 @@ export default function TaskCreateTextBox({ todo, setTodo, addTodo }) {
         e.preventDefault();
         if (!todo.text.trim()) return;
         addTodo(todo);
-        setTodo({ ...todo, text: "" })
-        console.log("Added task : ", todo)
+        setTodo({ ...todo, text: "" });
+        console.log("Added task : ", todo);
     }
 
     const handleInputChange = (e) => {
@@ -21,29 +21,40 @@ export default function TaskCreateTextBox({ todo, setTodo, addTodo }) {
                 type="text"
                 name="text"
                 className="todoTextBox"
-                placeholder="'Buy eggs...' or 'Get a life'"
+                placeholder="Buy eggs..."
                 value={todo.text}
                 onChange={handleInputChange}
             />
-            <select
-                name="type"
-                value={todo.type}
-                onChange={handleInputChange}
-            >
-                <option value="default">Default</option>
-                <option value="urgent">Urgent</option>
-                <option value="optional">Optional</option>
-            </select>
-            <select
-                name="importance"
-                value={todo.importance}
-                onChange={handleInputChange}
-            >
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-            </select>
-            <button>Create Task</button>
+            <div>
+                <div>
+                    <label for="type">Category</label>
+                    <select
+                        id="type"
+                        name="type"
+                        value={todo.type}
+                        onChange={handleInputChange}
+                    >
+                        <option value="default">Default</option>
+                        <option value="work">Work</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <label for="priority">Priority</label>
+                    <select
+                        id="priority"
+                        name="priority"
+                        value={todo.priority}
+                        onChange={handleInputChange}
+                    >
+                        {/* <option value="" hidden="hidden" selected="priority">
+                            Priority
+                        </option> */}
+                        <option value="low">Low Priority</option>
+                        <option value="important">Important</option>
+                        <option value="urgent">Urgent</option>
+                    </select>
+                    <button>Create Task</button>
+                </div>
+            </div>
         </form>
     );
 }

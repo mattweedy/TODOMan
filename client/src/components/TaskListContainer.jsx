@@ -11,7 +11,7 @@ export default function TaskListContainer() {
         id: "",
         text: "",
         type: "default",
-        importance: "medium",
+        priority: "medium",
     });
     // state for the list of todos
     const [todoList, setTodoList] = useState([]);
@@ -27,7 +27,7 @@ export default function TaskListContainer() {
             id   : ${todoWithId.id}
             text : ${todoWithId.text}
             type : ${todoWithId.type}
-            importance : ${todoWithId.importance}`);
+            priority : ${todoWithId.priority}`);
     };
 
     // remove a todo by its ID
@@ -43,8 +43,8 @@ export default function TaskListContainer() {
     // render list of todos
     const listItems = todoList.map((todo) => (
         <li key={todo.id}>
-            {/* {todo.id} | {todo.text} | {todo.type} | {todo.importance} */}
-            {todo.text} | {todo.type} | {todo.importance}
+            {/* {todo.id} | {todo.text} | {todo.type} | {todo.priority} */}
+            {todo.text} | {todo.type} | {todo.priority}
             <button onClick={() => removeTodo(todo.id)}>x</button>
         </li>
     ));
@@ -53,7 +53,7 @@ export default function TaskListContainer() {
         <tr key={todo.id}>
             <td>{todo.text}</td>
             <td>{todo.type}</td>
-            <td>{todo.importance}</td>
+            <td>{todo.priority}</td>
             <td><button onClick={() => removeTodo(todo.id)}>x</button></td>
         </tr>
     ));
@@ -69,8 +69,9 @@ export default function TaskListContainer() {
             <table>
                 <tr>
                     <th>Todo</th>
-                    <th>Type</th>
-                    <th>Importance</th>
+                    <th>Category</th>
+                    <th>Priority</th>
+                    <th>Remove</th>
                 </tr>
                 {tableItems}
             </table>
