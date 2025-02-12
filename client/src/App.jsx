@@ -21,7 +21,6 @@ function App() {
                     <h1>Begin adding tasks!</h1>
                     <h2>{!data ? "Loading..." : data}</h2>
                 </header>
-
                 <TaskListContainer />
             </div>
         </>

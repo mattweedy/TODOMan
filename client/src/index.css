@@ -1,6 +1,7 @@
 :root {
     --vandyke: #483d3f;
     --blue: #058ed9;
+    --offwhite: #fef8ec;
     --eggshell: #f4ebd9;
     --eggshell-friendly-text: #533f18;
     --grey: #a39a92;
@@ -59,6 +60,7 @@ button {
     background-color: var(--umber);
     cursor: pointer;
     transition: border-color 0.25s, background-color 0.25s;
+    margin: 0 1em 0 1em;
 }
 button:hover {
     /* border-color: #646cff; */
@@ -72,7 +74,7 @@ button:focus-visible {
 }
 
 input {
-    background-color: #FEF8EC;
+    background-color: var(--offwhite);
     color: var(--eggshell-friendly-text);
     border: 1px solid var(--eggshell-friendly-text);
     border-radius: 4px;
@@ -92,17 +94,42 @@ td, th {
     border-radius: 12px;
 }
 
+select {
+    background-color: #ffecc6;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    appearance: none;
+    border: 1px solid var(--eggshell-friendly-text);
+    border-radius: 4px;
+    padding: 0.6em 1.2em;
+    margin: 0 0.6em 0 0.6em;
+}
+
+select::-ms-expand {
+    background-color: var(--blue);
+    display: none;
+}
+
+option:active {
+    background-color: var(--blue);
+}
+
 .todoTextBox {
     width: 100%;
-    height: 50px; /* Increase height */
-    line-height: 50px; /* Match line-height to height */
-    text-align: left; /* Center text horizontally */
-    font-size: 16px; /* Adjust font size if needed */
+    height: 50px;
+    line-height: 50px;
+    text-align: left;
+    font-size: 1em;
+    margin-bottom: 1em;
 }
 
 .todoTextBox:focus {
     /* outline: var(--grey); */
     outline: 2px solid var(--umber);
+}
+
+.todoTable {
+    margin: 1em 0 1em 0;
 }
 
 @media (prefers-color-scheme: light) {

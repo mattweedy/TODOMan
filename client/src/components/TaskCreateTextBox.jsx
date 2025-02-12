@@ -31,9 +31,10 @@ export default function TaskCreateTextBox({ todo, setTodo, addTodo }) {
                     <select
                         id="type"
                         name="type"
+                        className="todoSelection"
                         value={todo.type}
                         onChange={handleInputChange}
-                    >
+                        >
                         <option value="default">Default</option>
                         <option value="work">Work</option>
                         <option value="other">Other</option>
@@ -42,12 +43,10 @@ export default function TaskCreateTextBox({ todo, setTodo, addTodo }) {
                     <select
                         id="priority"
                         name="priority"
+                        className="todoSelection"
                         value={todo.priority}
                         onChange={handleInputChange}
                     >
-                        {/* <option value="" hidden="hidden" selected="priority">
-                            Priority
-                        </option> */}
                         <option value="low">Low Priority</option>
                         <option value="important">Important</option>
                         <option value="urgent">Urgent</option>

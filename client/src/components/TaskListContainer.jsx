@@ -65,19 +65,22 @@ export default function TaskListContainer() {
                 setTodo={setTodo}
                 addTodo={addTodo}
             />
-            {/* <ul>{listItems}</ul> */}
-            <table>
-                <tr>
-                    <th>Todo</th>
-                    <th>Category</th>
-                    <th>Priority</th>
-                    <th>Remove</th>
-                </tr>
-                {tableItems}
+            <table className="todoTable">
+                <thead>
+                    <tr>
+                        <th>Todo</th>
+                        <th>Category</th>
+                        <th>Priority</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>{tableItems}</tbody>
             </table>
-            <button onClick={clearList}>
-                Clear All
-            </button>
+            {todoList.length === 0 ? (
+                null
+            ) : <button onClick={clearList}>
+            Clear All
+        </button>}
         </div>
     );
 }
